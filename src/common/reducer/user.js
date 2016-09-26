@@ -1,11 +1,12 @@
-initUser = {
+var initUser = {
   isLogIn: false,
   username: 'guest',
   token: null,
-  email: null
+  email: null,
+  isLogging: false,
 }
 
-export default user = (state=initUser,action) =>{
+const user = (state = initUser, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
@@ -13,7 +14,24 @@ export default user = (state=initUser,action) =>{
         username: action.username,
         token
       }
+    case 'LOG_IN_REQUEST':
+      return {
+        ...state,
+        isLogging: true
+      }
+    case 'LOAD_POSTS_SUCCESS':
+      return {
+        ...state,
+        isLogging: false
+      }
+    case 'LOAD_POSTS_SUCCESS':
+      return {
+        ...state,
+        isLogging: false
+      }
     default:
       return initUser
   }
 }
+
+export default user

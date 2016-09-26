@@ -3,7 +3,9 @@
 */
 
 import navigationAction from './navigation'
+import login from './user'
 
-module.exports = {
-  ...navigationAction
+
+export {
+  login
 }

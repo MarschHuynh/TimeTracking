@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import uesr from './user'
+import user from './user'
 import navigation from './navigation'
 
 const TTReducer = combineReducers({

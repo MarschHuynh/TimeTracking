@@ -17,6 +17,7 @@ import {
   switchTab
 } from "Actions"
 
+import {LoginScreenContainer} from 'Containers'
 import TabOne from './tabOne'
 import TabTwo from './tabTwo'
 import TabThree from './tabThree'
@@ -80,15 +81,21 @@ class TabView extends Component {
           return <TabOne drawLayout={this.state.drawLayout}/>
       }
     }
-    return (
-      <DrawLayout
-        ref='drawer'
-        drawerWidth={window.width-56*2}
-        drawerPosition={DrawLayout.positions.Left}
-        renderNavigationView={() => navigationView}>
-        {renderView()}
-      </DrawLayout>
-    );
+
+    if (!this.props.user.isLogin)
+      return (
+        <LoginScreenContainer></LoginScreenContainer>
+      )
+    else
+      return (
+        <DrawLayout
+          ref='drawer'
+          drawerWidth={window.width-56*2}
+          drawerPosition={DrawLayout.positions.Left}
+          renderNavigationView={() => navigationView}>
+          {renderView()}
+        </DrawLayout>
+      );
   }
 }
 

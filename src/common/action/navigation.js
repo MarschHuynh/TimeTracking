@@ -1,4 +1,4 @@
-switchTab = (tab) => {
+var switchTab = (tab) => {
   return {
     type: 'SWITCH_TAB',
     tab
