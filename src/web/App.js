@@ -10,7 +10,7 @@ export default class App extends Component {
 
         </AppBar>
         <div className='welcome'>
-          <h1 className='title'>Marsch Huynh</h1>
+          <h1 className='title'>Marsch Huynh from Da Nang</h1>
         </div>
       </div>
     );
