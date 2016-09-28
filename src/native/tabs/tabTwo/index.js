@@ -17,9 +17,11 @@ export default class TabTwo extends Component {
   constructor(props) {
     super(props);
   }
+
   onMenuButtonPress = () =>{
     this.props.drawLayout.openDrawer()
   }
+  
   render() {
     return (
       <View style={styles.container}>

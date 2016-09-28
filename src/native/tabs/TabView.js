@@ -37,11 +37,12 @@ class TabView extends Component {
   constructor(props) {
     super(props);
     this.state={
-      drawLayout: {}
+      drawLayout: null
     }
   }
 
   componentDidMount() {
+    console.log(this.refs);
     this.setState({drawLayout: this.refs.drawer})
   }
 

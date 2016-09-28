@@ -3,9 +3,10 @@
 */
 
 import navigationAction from './navigation'
-import login from './user'
+import { login, logout }  from './user'
 
 export {
   login,
+  logout,
   navigationAction
 }

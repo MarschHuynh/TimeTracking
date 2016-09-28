@@ -14,7 +14,7 @@ import {
   Button
 } from "Components"
 
-import { login } from 'Actions'
+import { login, logout } from 'Actions'
 
 const window = Dimensions.get('window');
 const goldRatio = window.height*0.39
@@ -53,6 +53,7 @@ class LoginScreenC extends Component {
   }
 
   _logout = () =>{
+    this.props.dispatch(logout());
     CookieManager.clearAll((err, res) => {
       if (err){
         console.log(err);
@@ -179,5 +180,5 @@ const select = (state) =>{
     user: state.user,
   }
 }
-const LoginScreen = connect(select)(LoginScreenC)
+var LoginScreen = connect(select)(LoginScreenC)
 export default LoginScreen

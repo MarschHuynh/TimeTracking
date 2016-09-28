@@ -34,6 +34,7 @@ var login = (username,password) =>{
               dispatch({
                   type: 'LOAD_POSTS_FAILURE',
                   error: 'Can\'t get link',
+                  isLogedIn: false,
                   isLogging: false
               })
             }
@@ -53,7 +54,7 @@ var login = (username,password) =>{
               dispatch({
                 type: 'LOAD_POSTS_SUCCESS',
                 username,
-                isLogIn: true,
+                isLogedIn: true,
                 isLogging: false
               })
             }).catch((error)=>{
@@ -61,6 +62,7 @@ var login = (username,password) =>{
               dispatch({
                   type: 'LOAD_POSTS_FAILURE',
                   error: 'Fail 1',
+                  isLogedIn: false,
                   isLogging: false
               })
             })
@@ -70,6 +72,7 @@ var login = (username,password) =>{
         dispatch({
             type: 'LOAD_POSTS_FAILURE',
             error: 'Fail 2',
+            isLogedIn: false,
             isLogging: false
         })
       })
@@ -77,4 +80,13 @@ var login = (username,password) =>{
   }
 }
 
-export default  login
+var logout = () => {
+  return {
+    type: 'LOGOUT'
+  }
+}
+
+export {
+  login,
+  logout
+}

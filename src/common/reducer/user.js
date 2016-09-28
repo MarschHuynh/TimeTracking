@@ -9,12 +9,6 @@ var initUser = {
 
 const user = (state = initUser, action) => {
   switch (action.type) {
-    case 'LOGIN':
-      return {
-        logIn: true,
-        username: action.username,
-        token
-      }
     case 'LOG_IN_REQUEST':
       return {
         ...state,
@@ -23,12 +17,19 @@ const user = (state = initUser, action) => {
     case 'LOAD_POSTS_SUCCESS':
       return {
         ...state,
+        isLogedIn: true,
         isLogging: false
       }
-    case 'LOAD_POSTS_SUCCESS':
+    case 'LOAD_POSTS_FAILURE':
       return {
         ...state,
+        isLogedIn: false,
         isLogging: false
+      }
+    case 'LOGOUT':
+      return {
+        ...state,
+        isLogedIn: false,
       }
     default:
       return initUser
