@@ -27,7 +27,7 @@ export default class Button extends Component {
       borderRadius: 5,
       margin: 5,
       justifyContent:'center',
-      maxHeight:35
+      maxHeight:35,
   }
 
   _styleText = {

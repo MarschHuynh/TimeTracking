@@ -17,7 +17,8 @@ import {
   switchTab
 } from "Actions"
 
-import {LoginScreenContainer} from 'Containers'
+import LoginScreen from './../login/LoginScreen'
+
 import TabOne from './tabOne'
 import TabTwo from './tabTwo'
 import TabThree from './tabThree'
@@ -82,9 +83,9 @@ class TabView extends Component {
       }
     }
 
-    if (!this.props.user.isLogin)
+    if (!this.props.user.isLogedIn)
       return (
-        <LoginScreenContainer></LoginScreenContainer>
+        <LoginScreen></LoginScreen>
       )
     else
       return (

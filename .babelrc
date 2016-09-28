@@ -1,5 +1,5 @@
 {
-  "presets": ["es2015","stage-0","react","react-native"],
+  "presets": ["react","react-native"],
   "env": {
       "development": {
           "plugins": [

@@ -5,7 +5,7 @@
 import navigationAction from './navigation'
 import login from './user'
 
-
 export {
-  login
+  login,
+  navigationAction
 }

@@ -1,9 +1,10 @@
 var initUser = {
-  isLogIn: false,
+  isLogedIn: false,
   username: 'guest',
   token: null,
   email: null,
   isLogging: false,
+  error: null
 }
 
 const user = (state = initUser, action) => {

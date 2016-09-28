@@ -1,7 +1,7 @@
 import React, { Component,PropTypes } from 'react'
 import { Provider } from 'react-redux'
 import TabView from './tabs/TabView'
-import configureStoreFhub from "./../store"
+import configureStoreMobile from "./../store/mobile"
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
 
 
 
-let store = configureStoreFhub(window.devToolsExtension && window.devToolsExtension())
+let store = configureStoreMobile(window.devToolsExtension && window.devToolsExtension())
 
 class TimeTracking extends Component {
   static propTypes = {
