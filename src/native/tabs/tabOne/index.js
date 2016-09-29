@@ -36,12 +36,23 @@ class TabOneC extends Component {
     });
   }
 
+  testApi = () =>{
+      fetch("https://tifl.dn.fiisoft.com/obj/").then((data)=>{
+        return data.json()
+      }).then((data)=>{
+        console.log(data);
+      }).catch((error)=>{
+        console.log('Error get API',error);
+      })
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <AppBar title="One" onPress={this.onMenuButtonPress}></AppBar>
         <Text>I'm the TabOne component</Text>
         <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
+        <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
       </View>
     );
   }

@@ -12,7 +12,7 @@ var login = (username,password) =>{
     fetch("https://tifl.dn.fiisoft.com/oauth/login",{
         mode: 'cors',
         headers:{
-          'Thien' : 'ok'
+          'Access-Control-Allow-Origin' : '*'
         }
       }).then((response) =>{
         console.log("RESP",response);
@@ -27,17 +27,17 @@ var login = (username,password) =>{
             var data = "username=" + username + "&" +"password=" + password
 
             console.log(data);
-            var lnk
-            try {
-              console.log("Link",lnk);
-            } catch (error) {
-              dispatch({
-                  type: 'LOAD_POSTS_FAILURE',
-                  error: 'Can\'t get link',
-                  isLogedIn: false,
-                  isLogging: false
-              })
-            }
+            // var lnk
+            // try {
+            //   console.log("Link",lnk);
+            // } catch (error) {
+            //   dispatch({
+            //       type: 'LOAD_POSTS_FAILURE',
+            //       error: 'Can\'t get link',
+            //       isLogedIn: false,
+            //       isLogging: false
+            //   })
+            // }
 
             lnk = txt.match(/action=\"(.*)\" /)[1].trim()
             console.log("Link 2",lnk);

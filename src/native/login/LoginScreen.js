@@ -19,7 +19,7 @@ import { login, logout } from 'Actions'
 const window = Dimensions.get('window');
 const goldRatio = window.height*0.39
 
-class LoginScreenC extends Component {
+class LoginScreen extends Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -33,11 +33,12 @@ class LoginScreenC extends Component {
     this.props.dispatch(login('administrator','admindemo'));
   }
 
-  _isLogging = () =>{
+  _isLogining = () =>{
     if (this.props.user.isLogging)
       return (
         <View style={styles.loaderContainer}>
-          <DoubleBounce size={20} color="red" />
+          <Pulse size={20} color="red" style={styles.loader}/>
+          <Text style={styles.text}>login</Text>
         </View>
       )
   }
@@ -66,9 +67,9 @@ class LoginScreenC extends Component {
   render() {
     return (
       <View style={styles.screen}>
-        {this._isLogging()}
+        {this._isLogining()}
         <View style={styles.loginContainer}>
-          <Text style={styles.logo}>Cash Flow Guide</Text>
+          <Text style={styles.logo}>Time Tracking</Text>
           <TextInput
             placeholderTextColor='rgb(150, 150, 150)'
             underlineColorAndroid='rgba(0,0,0,0)'
@@ -158,20 +159,22 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   loaderContainer:{
+    flex: 1,
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
     width: window.width,
     height: window.height,
-    backgroundColor: 'rgba(215, 215, 215, 0.4)',
+    backgroundColor: 'rgba(78, 78, 78, 0.8)',
     zIndex: 100,
   },
   loader:{
     flex:1,
-    left: window.width/2,
-    top: window.height/2,
-    backgroundColor: 'white',
-    zIndex: 100,
+    backgroundColor: 'red',
+  },
+  text:{
+    fontSize: 20,
+    color: 'white',
   }
 });
 
@@ -180,5 +183,5 @@ const select = (state) =>{
     user: state.user,
   }
 }
-var LoginScreen = connect(select)(LoginScreenC)
+LoginScreen = connect(select)(LoginScreen)
 export default LoginScreen

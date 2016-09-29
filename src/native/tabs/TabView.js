@@ -84,10 +84,12 @@ class TabView extends Component {
       }
     }
 
-    if (!this.props.user.isLogedIn)
+    if (!this.props.user.isLogedIn){
       return (
         <LoginScreen></LoginScreen>
       )
+    }
+
     else
       return (
         <DrawLayout

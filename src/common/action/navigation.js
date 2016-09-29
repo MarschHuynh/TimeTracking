@@ -4,7 +4,6 @@ var switchTab = (tab) => {
     tab
   }
 }
-
-module.exports = {
+export {
   switchTab
 }
