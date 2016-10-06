@@ -1,12 +1,13 @@
 /*
 * loginStatus :
 *   - 0 is not log in
-*   - 1 is logging in
+*   - 1 is logging in 
 *   - 2 is logged
 */
 
 var initUser = {
   loginStatus: 0,
+  isLoggingIn: 0,
   username: 'guest',
   sessionid: null,
   email: null,

@@ -1,4 +1,4 @@
-// var CookieManager = require('react-native-cookies');
+var CookieManager = require('react-native-cookies');
 var login = (username,password) =>{
   return function(dispatch,getState){
 
@@ -59,32 +59,32 @@ var login = (username,password) =>{
               })
             }).catch((error)=>{
 
-              // CookieManager.get('https://tifl.dn.fiisoft.com/ui/', (err, res) => {
-              //   if (err){
-              //     dispatch({
-              //         type: 'LOG_IN_FAILURE',
-              //         error: 'Please check your network anh try again.',
-              //         loginStatus: 0,
-              //     })
-              //   } else {
-              //     console.log(res.sessionid);
-              //     dispatch({
-              //         type: 'LOG_IN_SUCCESS',
-              //         username,
-              //         sessionid: res.sessionid,
-              //         loginStatus: 0,
-              //     })
-              //   }
-              // })
-
+              CookieManager.get('https://tifl.dn.fiisoft.com/ui/', (err, res) => {
+                if (err){
+                  dispatch({
+                      type: 'LOG_IN_FAILURE',
+                      error: 'Please check your network anh try again.',
+                      loginStatus: 0,
+                  })
+                } else {
+                  console.log(res.sessionid);
+                  dispatch({
+                      type: 'LOG_IN_SUCCESS',
+                      username,
+                      sessionid: res.sessionid,
+                      loginStatus: 0,
+                  })
+                }
+              })
 
               console.log("Fail but not fail",error);
 
-              dispatch({
-                  type: 'LOAD_POSTS_SUCCESS',
-                  username,
-                  loginStatus: 0,
-              })
+              // dispatch({
+              //     type: 'LOG_IN_SUCCESS',
+              //     username,
+              //     loginStatus: 0,
+              // })
+
             })
         })
       }).catch((error)=>{

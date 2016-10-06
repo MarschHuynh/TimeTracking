@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux'
 import { login } from './../../common/action'
-class LoginScreenC extends Component {
+class LoginScreen extends Component {
 
   onClickLogin = () => {
     this.props.dispatch(login('administrator','admindemo'));
@@ -67,7 +67,7 @@ const select = (state) =>{
     user: state.user,
   }
 }
-const LoginScreen = connect(select)(LoginScreenC)
+LoginScreen = connect(select)(LoginScreen)
 
 export default LoginScreen
 

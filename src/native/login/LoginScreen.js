@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     width: window.width,
     height: window.height,
     backgroundColor: 'rgba(78, 78, 78, 0.8)',
-    zIndex: 100,
+    zIndex: -100,
   },
   errorContainer:{
     flex: 1,
