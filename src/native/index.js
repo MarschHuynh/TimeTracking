@@ -1,6 +1,6 @@
 import React, { Component,PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import TabView from './tabs/TabView'
+import TimeTrackingApp from './TimeTrackingApp'
 import configureStoreMobile from "./../store/mobile"
 import {
   View,
@@ -9,8 +9,7 @@ import {
 } from 'react-native';
 
 
-
-let store = configureStoreMobile(window.devToolsExtension && window.devToolsExtension())
+let store = configureStoreMobile()
 
 class TimeTracking extends Component {
   static propTypes = {
@@ -18,12 +17,19 @@ class TimeTracking extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: true,
+      store: configureStoreMobile(() => this.setState({isLoading: false}))
+    }
   }
 
   render() {
+    if (this.state.isLoading){
+      return null;
+    }
     return (
-      <Provider store={store}>
-        <TabView/>
+      <Provider store={this.state.store}>
+        <TimeTrackingApp/>
       </Provider>
     );
   }

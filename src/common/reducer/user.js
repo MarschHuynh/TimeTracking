@@ -1,9 +1,15 @@
+/*
+* loginStatus :
+*   - 0 is not log in
+*   - 1 is logging in
+*   - 2 is logged
+*/
+
 var initUser = {
-  isLogedIn: false,
+  loginStatus: 0,
   username: 'guest',
-  token: null,
+  sessionid: null,
   email: null,
-  isLogging: false,
   error: null
 }
 
@@ -12,27 +18,34 @@ const user = (state = initUser, action) => {
     case 'LOG_IN_REQUEST':
       return {
         ...state,
-        isLogging: true
+        loginStatus: 1,
+        error: null,
       }
-    case 'LOAD_POSTS_SUCCESS':
+    case 'LOG_IN_SUCCESS':
       return {
         ...state,
-        isLogedIn: true,
-        isLogging: false
+        loginStatus: 2,
+        error: null,
       }
-    case 'LOAD_POSTS_FAILURE':
+    case 'LOG_IN_FAILURE':
       return {
         ...state,
-        isLogedIn: false,
-        isLogging: false
+        loginStatus: action.loginStatus,
+        error: action.error
       }
     case 'LOGOUT':
       return {
         ...state,
-        isLogedIn: false,
+        loginStatus: 0,
+        error: action.error
+      }
+    case 'RESET_ERROR':
+      return {
+        ...state,
+        error: null
       }
     default:
-      return initUser
+      return state
   }
 }
 

@@ -17,7 +17,7 @@ export default class TabThree extends Component {
     super(props);
   }
   onMenuButtonPress = () =>{
-    this.props.drawLayout.openDrawer()
+    this.context.openDrawer()
   }
   render() {
     return (

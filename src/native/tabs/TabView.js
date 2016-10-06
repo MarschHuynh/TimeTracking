@@ -17,7 +17,6 @@ import {
   switchTab
 } from "Actions"
 
-import LoginScreen from './../login/LoginScreen'
 
 import TabOne from './tabOne'
 import TabTwo from './tabTwo'
@@ -39,37 +38,45 @@ class TabView extends Component {
     this.state={
       drawLayout: null
     }
+
   }
 
-  componentDidMount() {
-    console.log(this.refs);
-    this.setState({drawLayout: this.refs.drawer})
+  getChildContext() {
+    return {
+      openDrawer: this.openDrawer,
+      name: "Marsch"
+    }
   }
 
-  _onItemPress = (text) => {
-    const { dispatch } = this.props
-    dispatch(switchTab(text));
+  openDrawer = () =>{
+    this.refs.drawer.openDrawer()
+  }
+
+  _onTabSelect = (tab) => {
+    const { onTabSelect } = this.props
+    onTabSelect(tab)
     this.refs.drawer.closeDrawer();
   }
 
-  render() {
-    var renderNavigationList = (
-      drawContent.map(({text,icon})=>{
-        return <ItemList key={text} text={text} icon={icon} onPress={()=>this._onItemPress(text)}></ItemList>
-      })
-    )
+  navigationView() {
+      return (
+        <View style={styles.drawContainer}>
+          <View style={styles.topDraw}>
+            <Text style={{color:'white'}}>{this.props.user.username}</Text>
+            <Text style={{color:'white'}}>{this.props.user.email}</Text>
+          </View>
+          <View style={styles.contentDraw}>
+            {
+              drawContent.map(({text,icon})=>{
+                return <ItemList key={text} text={text} icon={icon} onPress={()=>this._onTabSelect(text)}></ItemList>
+              })
+            }
+          </View>
+        </View>
+      )
+  }
 
-    var navigationView = (
-      <View style={styles.drawContainer}>
-        <View style={styles.topDraw}>
-          <Text style={{color:'white'}}>{this.props.user.username}</Text>
-          <Text style={{color:'white'}}>{this.props.user.email}</Text>
-        </View>
-        <View style={styles.contentDraw}>
-          {renderNavigationList}
-        </View>
-      </View>
-    )
+  render() {
 
     var renderView = () => {
       switch(this.props.tab){
@@ -84,29 +91,33 @@ class TabView extends Component {
       }
     }
 
-    if (!this.props.user.isLogedIn){
-      return (
-        <LoginScreen></LoginScreen>
-      )
-    }
-
-    else
-      return (
-        <DrawLayout
-          ref='drawer'
-          drawerWidth={window.width-56*2}
-          drawerPosition={DrawLayout.positions.Left}
-          renderNavigationView={() => navigationView}>
-          {renderView()}
-        </DrawLayout>
-      );
+    return (
+      <DrawLayout
+        ref='drawer'
+        drawerWidth={window.width-56*2}
+        drawerPosition={DrawLayout.positions.Left}
+        renderNavigationView={this.navigationView.bind(this)}>
+        {renderView()}
+      </DrawLayout>
+    );
   }
+}
+
+TabView.childContextTypes = {
+  openDrawer: PropTypes.func,
+  name: PropTypes.string
 }
 
 var select = (state) =>{
   return {
     tab: state.navigation.tab,
     user: state.user
+  }
+}
+
+var actions = (dispatch) =>{
+  return {
+    onTabSelect: (tab) =>dispatch(switchTab(tab))
   }
 }
 
@@ -147,6 +158,6 @@ const styles = StyleSheet.create({
   }
 });
 
-TabView = connect(select)(TabView)
+TabView = connect(select,actions)(TabView)
 
 export default  TabView

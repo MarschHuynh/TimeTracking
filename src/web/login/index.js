@@ -10,6 +10,16 @@ class LoginScreenC extends Component {
     this.props.dispatch(login('administrator','admindemo'));
   }
 
+  testApi = () =>{
+      fetch("https://tifl.dn.fiisoft.com/obj/").then((data)=>{
+        return data.json()
+      }).then((data)=>{
+        console.log(data);
+      }).catch((error)=>{
+        console.log('Error get API',error);
+      })
+  }
+
   render() {
     return (
       <div style={container}>
@@ -36,6 +46,14 @@ class LoginScreenC extends Component {
            backgroundColor="rgb(0, 188, 212)"
            labelStyle={{color:'white'}}
            onClick={this.onClickLogin}
+           style={{float:'right'}}
+           ></FlatButton>
+         <FlatButton
+           label="Test Api"
+           primary={true}
+           backgroundColor="rgb(0, 188, 212)"
+           labelStyle={{color:'white'}}
+           onClick={this.testApi}
            style={{float:'right'}}
            ></FlatButton>
       </form>

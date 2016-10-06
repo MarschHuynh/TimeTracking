@@ -12,7 +12,7 @@ import {
   Button
 } from 'Components'
 
-class TabOneC extends Component {
+class TabOne extends Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -22,7 +22,8 @@ class TabOneC extends Component {
   }
 
   onMenuButtonPress = () =>{
-    this.props.drawLayout.openDrawer()
+    console.log(this.context);
+    // this.context.openDrawer()
   }
 
   _logout = () =>{
@@ -37,7 +38,7 @@ class TabOneC extends Component {
   }
 
   testApi = () =>{
-      fetch("https://tifl.dn.fiisoft.com/obj/").then((data)=>{
+      fetch("https://tifl.dn.fiisoft.com/oauth/~bootstrap/").then((data)=>{
         return data.json()
       }).then((data)=>{
         console.log(data);
@@ -58,11 +59,16 @@ class TabOneC extends Component {
   }
 }
 
+
+TabOne.contextTypes = {
+  openDrawer: PropTypes.func
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
 
-var TabOne = connect()(TabOneC)
+TabOne = connect()(TabOne)
 export default TabOne

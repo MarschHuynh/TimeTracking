@@ -10,7 +10,11 @@ var createTTStore = applyMiddleware(thunk)(createStore);
 export default function configureStoreMobile(onComplete) {
 
   const store = autoRehydrate()(createTTStore)(TTReducer);
-  persistStore(store, {storage: AsyncStorage}, onComplete);
+  // persistStore(store, {storage: AsyncStorage,blacklist: ["isLogging"]}, onComplete);
+  persistStore(store, {
+    storage: AsyncStorage,
+    // blacklist: ['navigation']
+  }, onComplete);
 
   return store;
 }

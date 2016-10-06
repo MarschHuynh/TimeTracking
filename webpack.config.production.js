@@ -43,11 +43,11 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: './scripts/index',
+  entry: './src/web/index',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/static'),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/static'
   },
   resolve: {
     extensions: ['', '.js']
@@ -71,7 +71,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'scripts')
+        include: path.join(__dirname, 'src')
+      },
+      {
+        test: /\.css$/,
+        include : path.join(__dirname, 'src'),
+        loader: "style-loader!css-loader"
       }
     ]
   }

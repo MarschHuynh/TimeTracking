@@ -31,13 +31,13 @@ export default class Button extends Component {
   }
 
   _styleText = {
-    color: 'white',
+    color: this.props.textColor ? this.props.textColor : 'white',
     alignSelf: 'center',
   }
 
   render() {
     return (
-      <TouchableHighlight style={this._styleButton} onPress={this.props.onPressButton}>
+      <TouchableHighlight style={this._styleButton} onPress={this.props.onPressButton} underlayColor={this.props.underlayColor ? this.props.underlayColor : 'rgba(154, 154, 154, 0.8)'}>
         <Text style={this._styleText}>{this.props.text}</Text>
       </TouchableHighlight>
     );

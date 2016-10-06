@@ -33,7 +33,10 @@ class MainLayout extends Component {
     render() {
         return (
             <div>
-              <AppBar title='Time Tracking'></AppBar>
+              <AppBar title='Time Tracking'>
+                <Link to="login">Login</Link>
+              </AppBar>
+
               {this.props.children}
             </div>
         );

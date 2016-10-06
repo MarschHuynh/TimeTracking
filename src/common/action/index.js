@@ -3,10 +3,11 @@
 */
 
 import { switchTab } from './navigation'
-import { login, logout }  from './user'
+import { login, logout, resetError }  from './user'
 
 export {
   login,
   logout,
-  switchTab
+  switchTab,
+  resetError
 }

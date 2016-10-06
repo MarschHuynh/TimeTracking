@@ -5,11 +5,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import {
-  AppBar
-} from "Components"
-
-export default class TabTwo extends Component {
+export default class Profile extends Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -18,15 +14,10 @@ export default class TabTwo extends Component {
     super(props);
   }
 
-  onMenuButtonPress = () =>{
-    this.context.openDrawer()
-  }
-
   render() {
     return (
       <View style={styles.container}>
-        <AppBar title="Two" onPress={this.onMenuButtonPress}></AppBar>
-        <Text>I'm the TabTwo component</Text>
+        <Text>I'm the Profile component</Text>
       </View>
     );
   }
