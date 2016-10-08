@@ -9,13 +9,7 @@ var login = (username,password) =>{
       loginStatus: 1,
     })
 
-    fetch("https://tifl.dn.fiisoft.com/oauth/login",{
-    // fetch("https://tifl.dn.fiisoft.com/auth/",{
-        mode: 'cors',
-        headers:{
-          // 'Access-Control-Allow-Origin' : '*'
-        }
-      }).then((response) => {
+    fetch("https://tifl.dn.fiisoft.com/oauth/login").then((response) => {
         console.log("RES",response);
         response.text().then((txt) => {
 

@@ -13,19 +13,32 @@ class AppBar extends Component {
 
     render() {
         return (
+          <View style={styles.container}>
             <View style={styles.appbar}>
               <Icon size={30} name='ios-menu' color='white' style={styles.icon} onPress={this.props.onPress}/>
               <Text style={styles.text}>{this.props.title}</Text>
+            </View>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-  appbar: {
+  container: {
     ...Platform.select({
       ios:{
         marginTop: 20,
+        height: 44,
+      },
+      android:{
+        height: 56,
+      }
+    }),
+    backgroundColor: '#387EFFFF',
+  },
+  appbar: {
+    ...Platform.select({
+      ios:{
         height: 44,
       },
       android:{

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppBar from 'material-ui/AppBar';
+import AppBar from 'react-toolbox/lib/app_bar';
 
 export default class Profile extends Component {
   render() {

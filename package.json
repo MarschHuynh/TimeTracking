@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "web": "node server.js",
+    "web": "webpack-dashboard -- node server.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "build": "BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js"
   },
@@ -15,6 +15,7 @@
     "babel-runtime": "^6.11.6",
     "css-loader": "^0.25.0",
     "immutability-helper": "^2.0.0",
+    "node-sass": "^3.10.1",
     "normalize.css": "^4.2.0",
     "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.2",
@@ -26,8 +27,7 @@
     "react-native-vector-icons": "^2.1.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
-    "react-tap-event-plugin": "^1.0.0",
-    "react-toolbox": "^1.2.1",
+    "react-toolbox": "^2.0.0-beta.0",
     "react-transform-hmr": "^1.0.4",
     "redux": "^3.6.0",
     "redux-persist": "^4.0.0-alpha5",
@@ -35,5 +35,13 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.2.0"
   }
 }

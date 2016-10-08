@@ -13,7 +13,7 @@ export default function configureStoreMobile(onComplete) {
   // persistStore(store, {storage: AsyncStorage,blacklist: ["isLogging"]}, onComplete);
   persistStore(store, {
     storage: AsyncStorage,
-    // blacklist: ['navigation']
+    blacklist: ['user.isLoggingIn']
   }, onComplete);
 
   return store;

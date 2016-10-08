@@ -9,7 +9,8 @@ import {
   Dimensions,
   TextInput,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
+  StatusBar
 } from 'react-native';
 
 import {
@@ -46,13 +47,17 @@ class LoginScreen extends Component {
   }
 
   _isLogining = () =>{
-    if (this.props.user.loginStatus === 1)
+    if (this.props.user.isLoggingIn === 1)
       return (
         <View style={styles.loaderContainer}>
           <Pulse size={20} color="red" />
           <Text style={styles.text}>login</Text>
         </View>
       )
+  }
+
+  onRequestClose = () =>{
+
   }
 
   _errorMessage = () =>{
@@ -62,6 +67,7 @@ class LoginScreen extends Component {
             animationType={"fade"}
             transparent={true}
             visible={true}
+            onRequestClose={this.onRequestClose}
             >
            <View  style={styles.errorContainer}>
             <View style={styles.error}>
@@ -100,6 +106,11 @@ class LoginScreen extends Component {
   render() {
     return (
       <View style={styles.screen}>
+        <StatusBar
+          translucent={true}
+          backgroundColor="rgba(0, 0, 0, 0.2)"
+          barStyle="light-content"
+        />        
         {this._isLogining()}
         {this._errorMessage()}
         <View style={styles.loginContainer}>

@@ -3,12 +3,11 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
 
-
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: {
-    index: 'dist/index.html'
+    index: 'public/index.html'
   },
   contentBase: config.path
 }).listen(5000, 'localhost', function (err) {

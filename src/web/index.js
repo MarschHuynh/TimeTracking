@@ -3,20 +3,11 @@ import {render} from 'react-dom';
 import Home from './home';
 import Profile from './profile';
 import style from './style.css'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'react-toolbox/lib/app_bar';
 import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'
 import configureStoreWeb from "./../store/web"
-
-
-import LoginScreen from './login';
-
-// Fix warning.js?8a56:36Warning: Unknown prop `onTouchTap` on <button> tag. Remove this prop from the element.
-// import injectTapEventPlugin from 'react-tap-event-plugin';
-// injectTapEventPlugin();
+import Navigation from 'react-toolbox/lib/navigation';
 
 class MainLayout extends Component {
     static propTypes = {
@@ -33,10 +24,10 @@ class MainLayout extends Component {
     render() {
         return (
             <div>
-              <AppBar title='Time Tracking'>
-                <Link to="login">Login</Link>
+              <AppBar fixed flat >
+                <a href="/home">React Toolbox Docs</a>
+                <Navigation />
               </AppBar>
-
               {this.props.children}
             </div>
         );
@@ -47,15 +38,12 @@ let store = configureStoreWeb(window.devToolsExtension && window.devToolsExtensi
 
 const AppContainer = () => (
   <Provider store={store}>
-    <MuiThemeProvider>
       <Router history={browserHistory}>
         <Route path="/" component={MainLayout}>
           <IndexRoute component={Home}/>
-          <Route path='login' component={ LoginScreen }></Route>
           <Route path='profile' component={ Profile }></Route>
         </Route>
       </Router>
-    </MuiThemeProvider>
   </Provider>
 );
 

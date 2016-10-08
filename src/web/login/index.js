@@ -3,7 +3,6 @@ import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux'
-import { login } from './../../common/action'
 class LoginScreen extends Component {
 
   onClickLogin = () => {

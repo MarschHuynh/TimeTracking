@@ -44,6 +44,8 @@
 var webpack = require('webpack');
 var path = require('path');
 var buildPath = 'public'
+var DashboardPlugin = require('webpack-dashboard/plugin');
+
 
 module.exports = {
   entry: [
@@ -57,10 +59,11 @@ module.exports = {
     publicPath: '/static'
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js', '.jsx', '.scss','.css']
   },
   devtool: 'eval-source-map',
   plugins: [
+    new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -72,9 +75,15 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
       {
-        test: /\.css$/,
-        include : path.join(__dirname, 'src'),
-        loader: "style-loader!css-loader"
+          test: /\.css$/,
+          loaders: [
+              'style?sourceMap',
+              'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          ],
+      },
+      {
+        test: /(\.scss)$/,
+        loaders: ['style', 'css', 'sass']
       }
     ]
   }
