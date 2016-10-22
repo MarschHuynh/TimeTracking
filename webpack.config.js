@@ -61,7 +61,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.scss','.css']
   },
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   plugins: [
     new DashboardPlugin(),
     new webpack.HotModuleReplacementPlugin(),

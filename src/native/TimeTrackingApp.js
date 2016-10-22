@@ -1,5 +1,5 @@
 import React, { Component,PropTypes } from 'react';
-import TimeTrackingNavigation from './TimeTrackingNavigation'
+import TimeTrackingNavigator from './TimeTrackingNavigator'
 import { connect } from 'react-redux'
 import {
   View,
@@ -32,7 +32,7 @@ class TimeTrackingApp extends Component {
             backgroundColor="rgba(0, 0, 0, 0.2)"
             barStyle="light-content"
           />
-          <TimeTrackingNavigation/>
+        <TimeTrackingNavigator/>
         </View>
       )
   }

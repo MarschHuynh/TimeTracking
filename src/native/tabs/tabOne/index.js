@@ -15,7 +15,11 @@ import {
 class TabOne extends Component {
   static propTypes = {
     className: PropTypes.string,
-  };
+  }
+
+  static contextTypes = {
+    openDrawer: React.PropTypes.func
+  }
 
   constructor(props) {
     super(props);
@@ -23,7 +27,7 @@ class TabOne extends Component {
 
   onMenuButtonPress = () =>{
     console.log(this.context);
-    // this.context.openDrawer()
+    this.context.openDrawer()
   }
 
   _logout = () =>{
@@ -59,10 +63,9 @@ class TabOne extends Component {
   }
 }
 
-
-TabOne.contextTypes = {
-  openDrawer: PropTypes.func
-};
+// TabOne.contextTypes = {
+//   openDrawer: PropTypes.func
+// };
 
 const styles = StyleSheet.create({
   container: {

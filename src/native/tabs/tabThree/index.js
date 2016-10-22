@@ -11,7 +11,11 @@ import {
 export default class TabThree extends Component {
   static propTypes = {
     className: PropTypes.string,
-  };
+  }
+
+  static contextTypes = {
+    openDrawer: React.PropTypes.func
+  }
 
   constructor(props) {
     super(props);

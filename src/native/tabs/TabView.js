@@ -17,13 +17,13 @@ import {
   switchTab
 } from "Actions"
 
-
 import TabOne from './tabOne'
 import TabTwo from './tabTwo'
 import TabThree from './tabThree'
 
 const window = Dimensions.get('window')
 const goldRatio = window.height*0.39
+
 import {
   drawContent
 } from './constant'
@@ -38,13 +38,15 @@ class TabView extends Component {
     this.state={
       drawLayout: null
     }
+  }
 
+  static childContextTypes = {
+    openDrawer: React.PropTypes.func
   }
 
   getChildContext() {
     return {
       openDrawer: this.openDrawer,
-      name: "Marsch"
     }
   }
 
@@ -76,36 +78,32 @@ class TabView extends Component {
       )
   }
 
-  render() {
-
-    var renderView = () => {
-      switch(this.props.tab){
-        case 'TabOne':
-          return <TabOne drawLayout={this.state.drawLayout}/>
-        case 'TabTwo':
-          return <TabTwo drawLayout={this.state.drawLayout}/>
-        case 'TabThree':
-          return <TabThree drawLayout={this.state.drawLayout}/>
-        default:
-          return <TabOne drawLayout={this.state.drawLayout}/>
-      }
+  renderView = () => {
+    switch(this.props.tab){
+      case 'TabOne':
+        return <TabOne />
+      case 'TabTwo':
+        return <TabTwo />
+      case 'TabThree':
+        return <TabThree />
+      default:
+        return <TabOne />
     }
+  }
 
+  render() {
     return (
       <DrawLayout
         ref='drawer'
         drawerWidth={window.width-56*2}
         drawerPosition={DrawLayout.positions.Left}
         renderNavigationView={this.navigationView.bind(this)}>
-        {renderView()}
+        <View style={styles.content}>
+          {this.renderView()}
+        </View>
       </DrawLayout>
     );
   }
-}
-
-TabView.childContextTypes = {
-  openDrawer: PropTypes.func,
-  name: PropTypes.string
 }
 
 var select = (state) =>{
@@ -155,6 +153,9 @@ const styles = StyleSheet.create({
   welcome:{
     fontSize: 30,
     top: goldRatio,
+  },
+  content:{
+    flex:1
   }
 });
 

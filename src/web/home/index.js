@@ -6,7 +6,11 @@ export default class Home extends Component {
     return (
       <div className='welcome'>
         <h1 className='title'>Marsch Huynh</h1>
+<<<<<<< Updated upstream
         <Button icon='bookmark' label='Bookmark' accent />
+=======
+        <Button>Login</Button>
+>>>>>>> Stashed changes
       </div>
     );
   }

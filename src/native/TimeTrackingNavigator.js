@@ -7,7 +7,7 @@ import {
   Navigator
 } from 'react-native';
 
-export default class TimeTrackingNavagation extends Component {
+export default class TimeTrackingNavigator extends Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -17,14 +17,14 @@ export default class TimeTrackingNavagation extends Component {
   }
 
   renderScene = (route, navigator) => {
-    if (route){
-      return (
-        <Profile
-          {...route}
-          navigator = {navigator}
-        />
-      )
-    }
+    // if (route.profile){
+    //   return (
+    //     <Profile
+    //       {...route}
+    //       navigator = {navigator}
+    //     />
+    //   )
+    // }
     return <TabView navigator={navigator}></TabView>
   }
 
