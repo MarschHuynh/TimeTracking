@@ -15,6 +15,7 @@
     "babel-runtime": "^6.11.6",
     "css-loader": "^0.25.0",
     "immutability-helper": "^2.0.0",
+    "native-base": "^0.5.11",
     "node-sass": "^3.10.1",
     "normalize.css": "^4.2.0",
     "react": "^15.3.1",

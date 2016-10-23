@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { StyleSheet, View, Text, Platform } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
+import {
+  StatusBar
+} from 'react-native'
 
 class AppBar extends Component {
     static propTypes = {
@@ -14,6 +17,11 @@ class AppBar extends Component {
     render() {
         return (
           <View style={styles.container}>
+            <StatusBar
+              translucent={true}
+              backgroundColor='#1976D2'
+              barStyle='light-content'
+            />
             <View style={styles.appbar}>
               <Icon size={30} name='ios-menu' color='white' style={styles.icon} onPress={this.props.onPress}/>
               <Text style={styles.text}>{this.props.title}</Text>
@@ -27,14 +35,14 @@ const styles = StyleSheet.create({
   container: {
     ...Platform.select({
       ios:{
-        marginTop: 20,
-        height: 44,
+        paddingTop: 20,
       },
       android:{
-        height: 56,
+        paddingTop: 24,
       }
     }),
-    backgroundColor: '#387EFFFF',
+    backgroundColor: '#1976D2',
+    elevation: 4,
   },
   appbar: {
     ...Platform.select({
@@ -45,18 +53,11 @@ const styles = StyleSheet.create({
         height: 56,
       }
     }),
+    backgroundColor: '#2196F3',
     flex: 0,
     flexDirection: 'row',
-  	backgroundColor: '#387EFFFF',
     justifyContent: 'center',
     padding: 0,
-    elevation: 4,
-    shadowColor: 'black',
-    shadowOpacity: 0.5,
-    shadowOffset: {
-      height: 1,
-      width: 0
-    },
     alignItems:'center',
   },
   icon:{
@@ -80,7 +81,6 @@ const styles = StyleSheet.create({
     }),
     color: 'white',
     alignSelf: 'center',
-
   }
 });
 

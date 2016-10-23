@@ -2,6 +2,10 @@ import React, { Component,PropTypes } from 'react';
 import { Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
 import {connect} from 'react-redux'
 var CookieManager = require('react-native-cookies');
+
+import {
+} from 'native-base';
+
 import {
   View,
   Text,
@@ -14,7 +18,8 @@ import {
 } from 'react-native';
 
 import {
-  Button
+  Button,
+
 } from "Components"
 
 import { login, logout, resetError } from 'Actions'
@@ -107,10 +112,9 @@ class LoginScreen extends Component {
     return (
       <View style={styles.screen}>
         <StatusBar
-          translucent={true}
-          backgroundColor="rgba(0, 0, 0, 0.2)"
+          backgroundColor="rgba(0, 0, 0, 0.9)"
           barStyle="light-content"
-        />        
+        />
         {this._isLogining()}
         {this._errorMessage()}
         <View style={styles.loginContainer}>
@@ -129,11 +133,9 @@ class LoginScreen extends Component {
             onChangeText={(text) => this.setState({password:text})}
             style={styles.input}
             placeholder='password'/>
-          <View style={styles.btnGroup}>
-            <Button text='Login' bgColor='rgb(0, 0, 0)' onPressButton={this._onPressLoginButton}/>
-            <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
-            <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
-          </View>
+          <Button style={styles.button} text='Login' bgColor='rgb(0, 0, 0)' onPressButton={this._onPressLoginButton}/>
+          <Button style={styles.button} text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
+          <Button style={styles.button} text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
         </View>
         <View style={styles.social}>
           <Button text='Facebook' bgColor='#3b5998' onPressButton={this._onPressButtonFacebook}></Button>
@@ -146,20 +148,19 @@ class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
   screen: {
-    // padding:5,
     flex: 1,
     position: 'relative',
     flexDirection: 'column',
     backgroundColor: '#33A9E2',
+    padding: 16
   },
   input: {
     flex: 0,
     fontSize: 16,
     height: 40,
-    margin: 5,
     borderRadius: 2,
+    marginBottom:8,
     backgroundColor: 'rgb(240, 235, 235)',
-    // placeholderColor: 'white',
     paddingLeft: 5,
     alignItems: 'center',
     color: 'rgb(87, 87, 87)'
@@ -194,14 +195,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     zIndex: -1,
   },
-  btn:{
-    flex:1,
-    backgroundColor:'white',
-    padding: 5,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    margin: 5,
+  button:{
+    marginBottom: 8
   },
   loaderContainer:{
     flex: 1,

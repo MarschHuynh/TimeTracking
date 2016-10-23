@@ -53,23 +53,22 @@ class TabOne extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.screen}>
         <AppBar title="One" onPress={this.onMenuButtonPress}></AppBar>
-        <Text>I'm the TabOne component</Text>
-        <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
-        <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
+        <View style={styles.container}>
+          <Text>I'm the TabOne component</Text>
+          <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
+          <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
+        </View>
       </View>
     );
   }
 }
 
-// TabOne.contextTypes = {
-//   openDrawer: PropTypes.func
-// };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    margin: 16
   },
 });
 

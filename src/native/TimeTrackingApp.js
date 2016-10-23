@@ -27,12 +27,8 @@ class TimeTrackingApp extends Component {
       else
       return (
         <View style={styles.container}>
-          <StatusBar
-            translucent={true}
-            backgroundColor="rgba(0, 0, 0, 0.2)"
-            barStyle="light-content"
-          />
-        <TimeTrackingNavigator/>
+
+          <TimeTrackingNavigator/>
         </View>
       )
   }
