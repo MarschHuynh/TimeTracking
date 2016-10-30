@@ -20,12 +20,9 @@ export default class Button extends Component {
   _styleButton = {
       flex:1,
       padding: 10,
-      paddingLeft: 20,
-      paddingRight: 20,
       backgroundColor: this.props.bgColor,
-      elevation: 2,
-      borderRadius: 5,
-      margin: 5,
+      elevation: this.props.elevation?this.props.elevation:2,
+      borderRadius: this.props.borderRadius!=null?this.props.borderRadius:3,
       justifyContent:'center',
       maxHeight:35,
   }

@@ -10,7 +10,8 @@ import {
   TextInput,
   Modal,
   TouchableHighlight,
-  StatusBar
+  StatusBar,
+  Alert
 } from 'react-native';
 
 import {
@@ -29,13 +30,6 @@ class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      errorVisible: false
-    }
-  }
-
-  setErrorVisible(visible) {
-    this.setState({errorVisible: visible});
   }
 
   componentDidMount() {
@@ -43,7 +37,15 @@ class LoginScreen extends Component {
   }
 
   _onPressLoginButton = () => {
-    this.props.dispatch(login('administrator','admindemo'));
+    setTimeout(()=>{
+      this.props.dispatch({
+          type: 'LOG_IN_SUCCESS',
+          username:"Demo",
+          sessionid: "test",
+          loginStatus: 0,
+      })
+    })
+    // this.props.dispatch(login('administrator','admindemo'));
   }
 
   _isLogining = () =>{
@@ -56,30 +58,10 @@ class LoginScreen extends Component {
       )
   }
 
-  onRequestClose = () =>{
-
-  }
-
   _errorMessage = () =>{
-    if (this.props.user.error !== null && this.props.user.error !== undefined)
-        return (
-          <Modal
-            animationType={"fade"}
-            transparent={true}
-            visible={true}
-            onRequestClose={this.onRequestClose}
-            >
-           <View  style={styles.errorContainer}>
-            <View style={styles.error}>
-              <Text style={{alignSelf: 'center', fontSize:20}}>Error</Text>
-              <Text style={{alignSelf: 'center', fontSize:14, margin: 5}}>{this.props.user.error}</Text>
-              <Button text='Ok' textColor='black' bgColor='rgba(0, 0, 0, 0.1)' onPressButton={() => {
-                this.props.dispatch(resetError())
-              }}/>
-            </View>
-           </View>
-          </Modal>
-        )
+    if (this.props.user.error !== null && this.props.user.error !== undefined){
+      Alert.alert("Error",this.props.user.error,[{text:"OK",onPress:() => this.props.dispatch(resetError())}])
+    }
   }
 
   testApi = () =>{
@@ -110,34 +92,32 @@ class LoginScreen extends Component {
           translucent={true}
           backgroundColor="rgba(0, 0, 0, 0.2)"
           barStyle="light-content"
-        />        
+        />
         {this._isLogining()}
         {this._errorMessage()}
         <View style={styles.loginContainer}>
           <Text style={styles.logo}>Time Tracking</Text>
           <TextInput
-            placeholderTextColor='rgb(150, 150, 150)'
+            placeholderTextColor='rgb(214, 214, 214)'
             underlineColorAndroid='rgba(0,0,0,0)'
             ref='username'
             onChangeText={(text) => this.setState({username:text})}
             style={styles.input}
             placeholder='username'/>
           <TextInput
-            placeholderTextColor='rgb(150, 150, 150)'
+            placeholderTextColor='rgb(214, 214, 214)'
             underlineColorAndroid='rgba(0,0,0,0)'
             ref='password'
             onChangeText={(text) => this.setState({password:text})}
             style={styles.input}
             placeholder='password'/>
           <View style={styles.btnGroup}>
-            <Button text='Login' bgColor='rgb(0, 0, 0)' onPressButton={this._onPressLoginButton}/>
-            <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
-            <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
+            <Button text='Login' borderRadius={0} bgColor='rgb(96, 74, 204)' onPressButton={this._onPressLoginButton}/>
           </View>
         </View>
         <View style={styles.social}>
-          <Button text='Facebook' bgColor='#3b5998' onPressButton={this._onPressButtonFacebook}></Button>
-          <Button text='Google' bgColor='rgb(222, 72, 72)' ></Button>
+          <Button text='Facebook' borderRadius={0} bgColor='#3b5998' onPressButton={this._onPressButtonFacebook}></Button>
+          <Button text='Google' borderRadius={0} bgColor='rgb(222, 72, 72)' ></Button>
         </View>
       </View>
     );
@@ -146,7 +126,6 @@ class LoginScreen extends Component {
 
 const styles = StyleSheet.create({
   screen: {
-    // padding:5,
     flex: 1,
     position: 'relative',
     flexDirection: 'column',
@@ -156,13 +135,16 @@ const styles = StyleSheet.create({
     flex: 0,
     fontSize: 16,
     height: 40,
-    margin: 5,
-    borderRadius: 2,
-    backgroundColor: 'rgb(240, 235, 235)',
-    // placeholderColor: 'white',
+    margin: 16,
+    marginBottom: 8,
+    marginTop:0,
+    borderRadius: 0,
+    borderWidth: 1,
+    borderColor: 'white',
+    backgroundColor: 'transparent',
     paddingLeft: 5,
     alignItems: 'center',
-    color: 'rgb(87, 87, 87)'
+    color: 'white',
   },
   container:{
     flex: 1,
@@ -185,10 +167,12 @@ const styles = StyleSheet.create({
   },
   btnGroup:{
     zIndex: -1,
+    marginHorizontal: 16,
   },
   social:{
     flex:0,
     flexDirection: 'row',
+    marginHorizontal: 8,
     alignItems: 'flex-end',
     justifyContent: 'space-between',
     paddingVertical: 5,

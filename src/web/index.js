@@ -9,6 +9,10 @@ import { Provider } from 'react-redux'
 import configureStoreWeb from "./../store/web"
 import Navigation from 'react-toolbox/lib/navigation';
 
+import {
+  NavigationBar
+} from './component'
+
 class MainLayout extends Component {
     static propTypes = {
         className: PropTypes.string,
@@ -23,13 +27,9 @@ class MainLayout extends Component {
 
     render() {
         return (
-            <div>
-              <AppBar fixed flat >
-                <a href="/home">React Toolbox Docs</a>
-                <Navigation />
-              </AppBar>
-              {this.props.children}
-            </div>
+          <div>
+            <NavigationBar></NavigationBar>
+          </div>
         );
     }
 }
