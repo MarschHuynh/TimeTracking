@@ -2,6 +2,7 @@ import React, { Component,PropTypes } from 'react';
 import { Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
 import {connect} from 'react-redux'
 var CookieManager = require('react-native-cookies');
+
 import {
   View,
   Text,
@@ -15,7 +16,8 @@ import {
 } from 'react-native';
 
 import {
-  Button
+  Button,
+
 } from "Components"
 
 import { login, logout, resetError } from 'Actions'
@@ -89,8 +91,7 @@ class LoginScreen extends Component {
     return (
       <View style={styles.screen}>
         <StatusBar
-          translucent={true}
-          backgroundColor="rgba(0, 0, 0, 0.2)"
+          backgroundColor="rgba(0, 0, 0, 0.9)"
           barStyle="light-content"
         />
         {this._isLogining()}
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'column',
     backgroundColor: '#33A9E2',
+    padding: 16
   },
   input: {
     flex: 0,
@@ -141,7 +143,6 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     borderWidth: 1,
     borderColor: 'white',
-    backgroundColor: 'transparent',
     paddingLeft: 5,
     alignItems: 'center',
     color: 'white',
@@ -178,14 +179,8 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     zIndex: -1,
   },
-  btn:{
-    flex:1,
-    backgroundColor:'white',
-    padding: 5,
-    paddingHorizontal: 10,
-    borderRadius: 5,
-    justifyContent: 'center',
-    margin: 5,
+  button:{
+    marginBottom: 8
   },
   loaderContainer:{
     flex: 1,
