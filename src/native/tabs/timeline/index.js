@@ -6,15 +6,16 @@ import {
   View,
   Text,
   StyleSheet,
+  ListView
 } from 'react-native';
 import {
   AppBar,
   Button
 } from 'Components'
 
-class TabOne extends Component {
+class TimeLine extends Component {
   static propTypes = {
-    className: PropTypes.string,
+    className: PropTypes.string
   }
 
   static contextTypes = {
@@ -23,6 +24,16 @@ class TabOne extends Component {
 
   constructor(props) {
     super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource : ds.cloneWithRows([
+        {"id":1,title:"First",time:"12:10",content:"This is a first timeline item"},
+        {"id":2,title:"Second",time:"13:10",content:"This is a second timeline item"},
+        {"id":3,title:"third",time:"14:10",content:"This is a third timeline item"},
+      ])
+    }
+
+    console.log(this.props.state);
   }
 
   onMenuButtonPress = () =>{
@@ -51,26 +62,42 @@ class TabOne extends Component {
       })
   }
 
+  renderRow = (data) =>{
+    return (
+      <Text>{data.content}</Text>
+    )
+  }
+
   render() {
     return (
       <View style={styles.screen}>
-        <AppBar title="One" onPress={this.onMenuButtonPress}></AppBar>
-        <View style={styles.container}>
-          <Text>I'm the TabOne component</Text>
-          <Button text='Logout' bgColor='rgb(0, 0, 0)' onPressButton={this._logout}/>
-          <Button text='Test Api' bgColor='rgb(0, 0, 0)' onPressButton={this.testApi}/>
-        </View>
+        <AppBar title="TimeLine" onPress={this.onMenuButtonPress}></AppBar>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 16
+  screen: {
+    flex: 1,backgroundColor: '#f3f3f3'
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 });
 
-TabOne = connect()(TabOne)
-export default TabOne
+const select = (state) =>{
+  return {
+    timeline : state.timeline,
+    state: state
+  }
+}
+
+TimeLine = connect(select)(TimeLine)
+export default TimeLine

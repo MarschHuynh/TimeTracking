@@ -1,5 +1,5 @@
 var initNavigation = {
-  tab: 'TabOne'
+  tab: 'TimeLine'
 }
 const navigation = (state=initNavigation,action) => {
 

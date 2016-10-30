@@ -17,7 +17,7 @@ import {
   switchTab
 } from "Actions"
 
-import TabOne from './tabOne'
+import TimeLine from './timeline'
 import TabTwo from './tabTwo'
 import TabThree from './tabThree'
 
@@ -80,14 +80,14 @@ class TabView extends Component {
 
   renderView = () => {
     switch(this.props.tab){
-      case 'TabOne':
-        return <TabOne />
+      case 'TimeLine':
+        return <TimeLine />
       case 'TabTwo':
         return <TabTwo />
       case 'TabThree':
         return <TabThree />
       default:
-        return <TabOne />
+        return <TimeLine />
     }
   }
 

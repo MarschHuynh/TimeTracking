@@ -1,7 +1,7 @@
 drawContent = [
     {
       icon: 'ios-paper-outline',
-      text: 'TabOne'
+      text: 'TimeLine'
     },
     {
       icon: 'ios-chatboxes-outline',
